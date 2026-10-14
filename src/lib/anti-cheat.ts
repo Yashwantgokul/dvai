@@ -107,8 +107,10 @@ export function checkRateLimit(
 
 const ALLOWED_ORIGINS = [
   'https://dvai-red.vercel.app',
+  'https://dvai-eight.vercel.app',
   'http://localhost:3000',
   'http://localhost:3001',
+  ...(process.env.ALLOWED_ORIGINS?.split(',').map(s => s.trim()).filter(Boolean) ?? []),
 ];
 
 export function validateOrigin(request: Request): boolean {
